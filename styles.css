@@ -1,0 +1,191 @@
+/* ========== CSS Variables (Theme Colors) ========== */
+:root {
+    --bg-color: #1e1e1e;
+    --tile-color: #2c2c2c;
+    --tile-front: #444;
+    --tile-back: #fff;
+    --text-color: #fff;
+    --accent-color: #ff4081;
+  }
+  
+  /* ========== Body Styling ========== */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.4s ease; /* Smooth theme transition */
+  }
+  
+  /* ========== Container Wrapper ========== */
+  .container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  /* ========== Header Section (Title + Controls) ========== */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* ========== Controls Wrapper (timer, restart, toggle) ========== */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* ========== Game Grid Layout ========== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 12px;
+  }
+  
+  /* ========== Tile/Card Styling ========== */
+  .tile {
+    background-color: var(--tile-color);
+    border-radius: 12px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  /* ========== Flip Animation Class ========== */
+  .tile.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* ========== Front and Back Faces of Tiles ========== */
+  .tile .front, .tile .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 2rem;
+  }
+  
+  /* Front face of tile */
+  .tile .front {
+    background-color: var(--tile-front);
+  }
+  
+  /* Back face of tile, rotated */
+  .tile .back {
+    background-color: var(--tile-back);
+    transform: rotateY(180deg);
+  }
+  
+  /* ========== Win Message Styling ========== */
+  #win-message {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    animation: fadeInUp 1s ease-in-out;
+    position: relative;
+  }
+  
+  /* Utility class to hide elements */
+  .hidden {
+    display: none;
+  }
+  
+  /* ========== Toggle Switch Styling (Dark/Light Mode) ========== */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Slider style for the switch */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+  }
+  
+  /* Slider knob */
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  /* When checkbox is checked (active) */
+  input:checked + .slider {
+    background-color: var(--accent-color);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  
+  /* ========== Light Theme Overrides ========== */
+  body.light {
+    --bg-color: #f0f0f0;
+    --tile-color: #ffffff;
+    --tile-front: #ddd;
+    --tile-back: #444;
+    --text-color: #000;
+    --accent-color: #0077ff;
+  }
+  
+  /* ========== Animation for Win Message ========== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ========== Confetti Canvas (Win Effect) ========== */
+  #confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Places behind other elements */
+  }
+  

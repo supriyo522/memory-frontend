@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxury Memory Game</title>
+  
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main container for the game -->
+  <div class="container">
+
+    <!-- Game header containing title and control buttons -->
+    <header>
+      <h1>Memory Game</h1>
+
+      <!-- Control panel: timer, restart button, and theme toggle -->
+      <div class="controls">
+        <!-- Timer display -->
+        <span id="timer">Time: 0s</span>
+
+        <!-- Button to restart the game -->
+        <button id="restart">Restart</button>
+
+        <!-- Theme toggle switch (light/dark mode) -->
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Game grid where cards will be displayed -->
+    <div class="grid" id="game-grid"></div>
+
+    <!-- Hidden win message shown when the game is completed -->
+    <div id="win-message" class="hidden">
+      🎉 You won! 🎉
+      <!-- Canvas element for win animation (confetti) -->
+      <canvas id="confetti"></canvas>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript for game logic -->
+  <script src="script.js"></script>
+</body>
+</html>
